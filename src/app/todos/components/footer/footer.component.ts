@@ -8,20 +8,23 @@ import { FilterEnum } from '../../types/filter.enum';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent {
   todosService = inject(TodoService);
   // filter = this.todosService.filterSig(); wrong
-  filterSig = this.todosService.filterSig
+  filterSig = this.todosService.filterSig;
 
   // Computed property for count
   activeCount = computed(() => {
-    return this.todosService.todosSig().filter((todo) => !todo.isCompleted).length
-  })
+    return this.todosService.todosSig().filter((todo) => !todo.isCompleted)
+      .length;
+  });
 
   noTodosClass = computed(() => this.todosService.todosSig().length === 0);
-
+  itemsLeftText = computed(
+    () => `item${this.activeCount() !== 1 ? 's' : ''} left`
+  );
 
   filterEnum = FilterEnum;
 
