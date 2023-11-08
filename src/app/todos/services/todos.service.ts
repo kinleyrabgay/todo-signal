@@ -1,5 +1,6 @@
 import { Injectable, signal } from "@angular/core";
 import { TodoInterface } from "../types/todo.interface";
+import { FilterEnum } from "../types/filter.enum";
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,7 @@ import { TodoInterface } from "../types/todo.interface";
 
 export class TodoService {
   todosSig = signal<TodoInterface[]>([]);
+  filterSig = signal<FilterEnum>(FilterEnum.all);
 
   addTodo(text: string): void {
     const newTodo: TodoInterface = {
