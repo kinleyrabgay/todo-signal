@@ -42,4 +42,12 @@ export class TodoComponent implements OnInit {
   setTodoInEditMode(): void {
     this.setEditingId.emit(this.todo.id);
   }
+
+  removeTodo(id: string): void {
+    this.todosService.removeTodo(id);
+  }
+
+  toggleTodo(): void {
+    this.todosService.toggleTodo(this.todo.id);
+  }
 }
