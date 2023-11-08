@@ -10,6 +10,11 @@ export class TodoService {
   todosSig = signal<TodoInterface[]>([]);
   filterSig = signal<FilterEnum>(FilterEnum.all);
 
+  changeFilter(filterName: FilterEnum): void {
+    // set overrides completely the data inside signal
+    this.filterSig.set(filterName);
+  }
+
   addTodo(text: string): void {
     const newTodo: TodoInterface = {
       text, 
