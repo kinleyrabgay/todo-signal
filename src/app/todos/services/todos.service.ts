@@ -42,4 +42,10 @@ export class TodoService {
       )
     );
   }
+
+  toggleAll(isCompleted: boolean): void {
+    this.todosSig.update((todos) =>
+      todos.map((todo) => ({ ...todo, isCompleted }))
+    );
+  }
 }

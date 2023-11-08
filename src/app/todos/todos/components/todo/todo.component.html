@@ -1,4 +1,4 @@
-<li [ngClass]="{ editing: isEditing }">
+<li [ngClass]="{ editing: isEditing, completed: todo.isCompleted }">
   <div class="view">
     <input
       class="toggle"
@@ -12,6 +12,7 @@
   <ng-container *ngIf="isEditing">
     <input
       class="edit"
+      #textInput
       [value]="editingText"
       (keyup)="changeText($event)"
       (keyup.enter)="changeTodo()"
